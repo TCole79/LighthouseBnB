@@ -56,7 +56,6 @@ exports.getUserWithEmail = getUserWithEmail;
 // };
 // exports.getUserWithId = getUserWithId;
 const getUserWithId = function (id) {
-
   return pool
     .query(
       `SELECT *
@@ -88,17 +87,15 @@ exports.getUserWithId = getUserWithId;
 // };
 // exports.addUser = addUser;
 
-const addUser =  function(user) {
+const addUser = function (user) {
   const query = {
-    text: 'INSERT INTO users(name, email, password) VALUES($1, $2, $3)',
+    text: "INSERT INTO users(name, email, password) VALUES($1, $2, $3)",
     values: [user.name, user.email, user.password],
   };
   console.log(user);
-  return pool
-    .query(query.text, query.values)
-    .then((res) => {
-      return res.rows;
-    });
+  return pool.query(query.text, query.values).then((res) => {
+    return res.rows;
+  });
 };
 exports.addUser = addUser;
 
